@@ -49,23 +49,21 @@ public class StudentService {
             existingStudent.setSdtAdd(newStudentData.getSdtAdd());
 
             return studentRepo.save(existingStudent);  
-        } 
-        else {
+        } else {
             throw new RuntimeException("Student with stdRol " + stdRol + " not found");
         }
     }
-
 
     public String deleteStudent1(Integer stdRol) {
         StudentEnt existing = studentRepo.findByStdRol(stdRol);
         if (existing != null) {
             studentRepo.delete(existing); 
             return "Student Deleted Successfully";
-        } 
-        else {
+        } else {
             return "Student with Roll Number " + stdRol + " not found.";
         }
     }
+
     public String deleteAllStudents() {
         studentRepo.deleteAll(); 
         return "All students have been deleted successfully.";
